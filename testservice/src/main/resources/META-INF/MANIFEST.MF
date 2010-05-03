@@ -1,0 +1,6 @@
+Bundle-Version: 1.0
+Bundle-SymbolicName: org.openengsb.testservice
+Bundle-Name: Test-Service
+Bundle-Vendor: Tester
+Export-Package: org.openengsb.testservice
+Bundle-ManifestVersion: 2
