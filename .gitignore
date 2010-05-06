@@ -2,3 +2,4 @@
 *.project
 *target
 *Thumbs.db
+*.settings
