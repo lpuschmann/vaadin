@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+  <!-- regular spring configuration file defining simple service
+       bean. We've kept the osgi definitions in a separate 
+       configuration file so that this file can easily be used
+       for testing outside of an OSGi environment -->
+
+  <bean name="testService" class="org.openengsb.testservice.impl.MyTestServiceImpl">
+  	<property name="sessionFactory">
+		<ref bean="sessionFactory"/>
+	</property>
+  </bean>
+
+  <bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
+
+  <bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="mappingResources">
+			<value>META-INF/Person.hbm.xml</value>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.H2Dialect</prop>
+				<prop key="hibernate.connection.driver_class">org.h2.Driver</prop>
+				<prop key="hibernate.connection.url">jdbc:h2:tcp://localhost/C:/h2db</prop>
+				<prop key="hibernate.connection.username">sa</prop>
+				<prop key="hibernate.connection.pool_size">1</prop>
+				<prop key="hibernate.default_catalog">H2DB</prop>
+				<prop key="hibernate.default_schema">PUBLIC</prop>
+				<prop key="hibernate.current_session_context_class">thread</prop>
+				<prop key="hibernate.cache.provider_class">org.hibernate.cache.NoCacheProvider</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="org.h2.Driver"/>
+		<property name="url" value="jdbc:h2:tcp://192.168.1.2:9092/h2db"/>
+		<property name="username" value="sa"/>
+		<property name="password" value=""/>
+	</bean>
+
+
+
+</beans>

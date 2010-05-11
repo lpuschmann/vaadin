@@ -1,0 +1,7 @@
+Bundle-Version: 1.0
+Bundle-SymbolicName: org.openengsb.testservice
+Bundle-Name: dbservice-hibernate
+Bundle-Vendor: Tester
+Import-Package: org.hibernate, org.hibernate.cfg, org.hibernate.classic, org.h2, org.springframework.orm.hibernate3, org.springframework.orm.hibernate3.support, org.springframework.jdbc.datasource, org.springframework.jdbc, org.springframework.jdbc.support, org.hibernate.proxy, javassist.util.proxy				
+Export-Package: org.openengsb.testservice, org.openengsb.hibernate
+Bundle-ManifestVersion: 2
